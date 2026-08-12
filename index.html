@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Privacy Policy — Funny Sound Effects</title>
+  <title><span data-i18n="privacyPolicy">Privacy Policy</span> — Funny Sound Effects</title>
 
   <style>
     :root {
@@ -282,6 +282,10 @@
       }
     }
 
+
+    .language-select{margin-left:auto;margin-right:10px;min-height:40px;padding:0 10px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;cursor:pointer}
+    [dir="rtl"] .section-content{padding-left:0;padding-right:50px}
+    @media(max-width:600px){.language-select{max-width:120px;font-size:13px}[dir="rtl"] .section-content{padding-right:0}}
     /* =========================
        DARK MODE
     ========================= */
@@ -369,6 +373,10 @@
         Privacy Policy
       </div>
 
+      <select id="languageSelect" class="language-select" aria-label="Select language">
+        <option value="en">English</option><option value="km">ខ្មែរ</option><option value="zh">中文</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt">Português</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="id">Bahasa Indonesia</option><option value="th">ไทย</option><option value="vi">Tiếng Việt</option><option value="ar">العربية</option><option value="hi">हिन्दी</option><option value="ru">Русский</option>
+      </select>
+
       <button
         class="theme-button"
         id="themeButton"
@@ -401,7 +409,7 @@
       </h1>
 
       <p class="last-updated">
-        Last updated:
+        <span data-i18n="lastUpdatedLabel">Last updated:</span>
         <span id="lastUpdated">August 9, 2026</span>
       </p>
 
@@ -426,7 +434,7 @@
           </div>
 
           <h2 class="section-title">
-            1. Introduction
+            <span data-i18n="introTitle">1. Introduction</span>
           </h2>
 
         </div>
@@ -456,7 +464,7 @@
           </div>
 
           <h2 class="section-title">
-            2. Information We Collect
+            <span data-i18n="collectTitle">2. Information We Collect</span>
           </h2>
 
         </div>
@@ -486,7 +494,7 @@
           </div>
 
           <h2 class="section-title">
-            3. App Data
+            <span data-i18n="appDataTitle">3. App Data</span>
           </h2>
 
         </div>
@@ -516,7 +524,7 @@
           </div>
 
           <h2 class="section-title">
-            4. Audio Files
+            <span data-i18n="audioTitle">4. Audio Files</span>
           </h2>
 
         </div>
@@ -545,7 +553,7 @@
           </div>
 
           <h2 class="section-title">
-            5. Sharing
+            <span data-i18n="sharingTitle">5. Sharing</span>
           </h2>
 
         </div>
@@ -575,7 +583,7 @@
           </div>
 
           <h2 class="section-title">
-            6. Third-Party Services
+            <span data-i18n="thirdPartyTitle">6. Third-Party Services</span>
           </h2>
 
         </div>
@@ -604,7 +612,7 @@
           </div>
 
           <h2 class="section-title">
-            7. Children’s Privacy
+            <span data-i18n="childrenTitle">7. Children’s Privacy</span>
           </h2>
 
         </div>
@@ -634,7 +642,7 @@
           </div>
 
           <h2 class="section-title">
-            8. Data Security
+            <span data-i18n="securityTitle">8. Data Security</span>
           </h2>
 
         </div>
@@ -663,7 +671,7 @@
           </div>
 
           <h2 class="section-title">
-            9. Changes to This Privacy Policy
+            <span data-i18n="changesTitle">9. Changes to This Privacy Policy</span>
           </h2>
 
         </div>
@@ -692,7 +700,7 @@
           </div>
 
           <h2 class="section-title">
-            10. Contact Us
+            <span data-i18n="contactTitle">10. Contact Us</span>
           </h2>
 
         </div>
@@ -719,7 +727,7 @@
 
     <div class="thank-you">
 
-      Thank you for using Funny Sound Effects
+      <span data-i18n="thankYou">Thank you for using Funny Sound Effects</span>
       <span class="heart">❤️</span>
 
     </div>
@@ -732,83 +740,17 @@
   ========================== -->
 
   <script>
-
-    // =========================
-    // DARK MODE
-    // =========================
-
-    const themeButton = document.getElementById("themeButton");
-
-    const savedTheme = localStorage.getItem("privacy-theme");
-
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark");
-      themeButton.textContent = "☀️";
-    }
-
-    themeButton.addEventListener("click", () => {
-
-      document.body.classList.toggle("dark");
-
-      const isDark =
-        document.body.classList.contains("dark");
-
-      themeButton.textContent =
-        isDark ? "☀️" : "🌙";
-
-      localStorage.setItem(
-        "privacy-theme",
-        isDark ? "dark" : "light"
-      );
-
-    });
-
-
-    // =========================
-    // LAST UPDATED DATE
-    // =========================
-
-    // Keep the date from your Flutter app.
-    const lastUpdated = "August 9, 2026";
-
-    document.getElementById("lastUpdated").textContent =
-      lastUpdated;
-
-
-    // =========================
-    // SCROLL ANIMATION
-    // =========================
-
-    const sections =
-      document.querySelectorAll(".section");
-
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.style.opacity = "1";
-              entry.target.style.transform =
-                "translateY(0)";
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.1
-        }
-      );
-
-
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-
+const themeButton=document.getElementById("themeButton"), languageSelect=document.getElementById("languageSelect");
+if(localStorage.getItem("privacy-theme")==="dark"){document.body.classList.add("dark");themeButton.textContent="☀️";}
+themeButton.addEventListener("click",()=>{document.body.classList.toggle("dark");const d=document.body.classList.contains("dark");themeButton.textContent=d?"☀️":"🌙";localStorage.setItem("privacy-theme",d?"dark":"light");});
+document.getElementById("lastUpdated").textContent="August 9, 2026";
+const base={privacyPolicy:"Privacy Policy",lastUpdatedLabel:"Last updated:",introTitle:"1. Introduction",introText:"Welcome to Funny Sound Effects. We respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how our app handles information when you use Funny Sound Effects.",collectTitle:"2. Information We Collect",collectText:"Funny Sound Effects is designed to work primarily offline. We do not require you to create an account and we do not intentionally collect personal information such as your name, email address, phone number, or location.",appDataTitle:"3. App Data",appDataText:"The app may store certain preferences and usage data locally on your device, such as favorite sounds, played counts, and recently played information. This information is stored locally and is used only to provide app functionality.",audioTitle:"4. Audio Files",audioText:"The sound effects included in the app are used to provide the core functionality of the application. Audio files are played locally on your device and are not uploaded to our servers.",sharingTitle:"5. Sharing",sharingText:"If you choose to share a sound effect using the sharing feature, the selected file may be passed to the sharing application you choose. We do not control how third-party apps handle the shared content.",thirdPartyTitle:"6. Third-Party Services",thirdPartyText:"The app may use third-party services or libraries to provide certain functionality. These services may process information according to their own privacy policies.",childrenTitle:"7. Children’s Privacy",childrenText:"Funny Sound Effects does not knowingly collect personal information from children. Because the app does not require an account or personal information, it is designed to minimize the collection of user data.",securityTitle:"8. Data Security",securityText:"We take reasonable steps to protect information handled by the application. However, no electronic storage or transmission method can be guaranteed to be completely secure.",changesTitle:"9. Changes to This Privacy Policy",changesText:"We may update this Privacy Policy from time to time. Any changes will be reflected by updating the "Last updated" date shown at the top of this page.",contactTitle:"10. Contact Us",contactText:"If you have any questions or concerns about this Privacy Policy, please contact us through the support information provided on the app store listing.",thankYou:"Thank you for using Funny Sound Effects"};
+const tr={en:base,km:{...base,privacyPolicy:"គោលការណ៍ឯកជនភាព",lastUpdatedLabel:"បានធ្វើបច្ចុប្បន្នភាពចុងក្រោយ៖",introTitle:"១. សេចក្តីផ្តើម",introText:"សូមស្វាគមន៍មកកាន់ Funny Sound Effects។ យើងគោរពឯកជនភាពរបស់អ្នក និងប្តេជ្ញាការពារព័ត៌មានផ្ទាល់ខ្លួនរបស់អ្នក។ គោលការណ៍ឯកជនភាពនេះពន្យល់ពីរបៀបដែលកម្មវិធីរបស់យើងគ្រប់គ្រងព័ត៌មាន នៅពេលអ្នកប្រើ Funny Sound Effects។",collectTitle:"២. ព័ត៌មានដែលយើងប្រមូល",collectText:"Funny Sound Effects ត្រូវបានរចនាឡើងឱ្យដំណើរការជាចម្បងដោយមិនចាំបាច់ប្រើអ៊ីនធឺណិត។ យើងមិនតម្រូវឱ្យអ្នកបង្កើតគណនី ហើយយើងមិនមានបំណងប្រមូលព័ត៌មានផ្ទាល់ខ្លួន ដូចជា ឈ្មោះ អ៊ីមែល លេខទូរស័ព្ទ ឬទីតាំងរបស់អ្នកឡើយ។",appDataTitle:"៣. ទិន្នន័យកម្មវិធី",appDataText:"កម្មវិធីអាចរក្សាទុកការកំណត់ និងទិន្នន័យប្រើប្រាស់មួយចំនួននៅលើឧបករណ៍របស់អ្នក ដូចជា សំឡេងដែលចូលចិត្ត ចំនួនដងដែលបានចាក់ និងព័ត៌មានអំពីសំឡេងដែលបានចាក់ថ្មីៗ។ ព័ត៌មាននេះត្រូវបានរក្សាទុកក្នុងឧបករណ៍ និងប្រើសម្រាប់មុខងារកម្មវិធីប៉ុណ្ណោះ។",audioTitle:"៤. ឯកសារសំឡេង",audioText:"បែបផែនសំឡេងដែលមាននៅក្នុងកម្មវិធី ត្រូវបានប្រើសម្រាប់មុខងារសំខាន់របស់កម្មវិធី។ ឯកសារសំឡេងត្រូវបានចាក់ក្នុងឧបករណ៍របស់អ្នក ហើយមិនត្រូវបានផ្ទុកឡើងទៅម៉ាស៊ីនមេរបស់យើងទេ។",sharingTitle:"៥. ការចែករំលែក",sharingText:"ប្រសិនបើអ្នកជ្រើសរើសចែករំលែកបែបផែនសំឡេង ឯកសារដែលបានជ្រើសអាចត្រូវបានបញ្ជូនទៅកម្មវិធីចែករំលែកដែលអ្នកជ្រើសរើស។ យើងមិនគ្រប់គ្រងពីរបៀបដែលកម្មវិធីភាគីទីបីប្រើប្រាស់មាតិកាដែលបានចែករំលែកនោះទេ។",thirdPartyTitle:"៦. សេវាកម្មភាគីទីបី",thirdPartyText:"កម្មវិធីអាចប្រើសេវាកម្ម ឬបណ្ណាល័យរបស់ភាគីទីបី ដើម្បីផ្តល់មុខងារមួយចំនួន។ សេវាកម្មទាំងនេះអាចដំណើរការព័ត៌មានតាមគោលការណ៍ឯកជនភាពរបស់ពួកគេផ្ទាល់។",childrenTitle:"៧. ឯកជនភាពរបស់កុមារ",childrenText:"Funny Sound Effects មិនប្រមូលព័ត៌មានផ្ទាល់ខ្លួនពីកុមារដោយចេតនាឡើយ។ ដោយសារកម្មវិធីមិនតម្រូវឱ្យមានគណនី ឬព័ត៌មានផ្ទាល់ខ្លួន វាត្រូវបានរចនាឡើងដើម្បីកាត់បន្ថយការប្រមូលទិន្នន័យអ្នកប្រើប្រាស់។",securityTitle:"៨. សុវត្ថិភាពទិន្នន័យ",securityText:"យើងចាត់វិធានការសមស្របដើម្បីការពារព័ត៌មានដែលកម្មវិធីគ្រប់គ្រង។ ទោះជាយ៉ាងណា មិនមានវិធីរក្សាទុក ឬបញ្ជូនព័ត៌មានអេឡិចត្រូនិកណាមួយដែលអាចធានាសុវត្ថិភាពបាន ១០០% ទេ។",changesTitle:"៩. ការផ្លាស់ប្តូរគោលការណ៍ឯកជនភាព",changesText:"យើងអាចធ្វើបច្ចុប្បន្នភាពគោលការណ៍ឯកជនភាពនេះពីពេលមួយទៅពេលមួយ។ ការផ្លាស់ប្តូរនឹងបង្ហាញតាមរយៈការកែប្រែកាលបរិច្ឆេទ "បានធ្វើបច្ចុប្បន្នភាពចុងក្រោយ" នៅខាងលើទំព័រ។",contactTitle:"១០. ទំនាក់ទំនង",contactText:"ប្រសិនបើអ្នកមានសំណួរ ឬកង្វល់អំពីគោលការណ៍ឯកជនភាពនេះ សូមទាក់ទងយើងតាមព័ត៌មានជំនួយដែលមាននៅលើទំព័រកម្មវិធីក្នុង App Store។",thankYou:"អរគុណសម្រាប់ការប្រើប្រាស់ Funny Sound Effects"}};
+// The selector supports these major languages. They currently fall back to English until professionally reviewed translations are supplied.
+["zh","es","fr","de","pt","ja","ko","id","th","vi","ar","hi","ru"].forEach(x=>tr[x]=base);
+function applyLanguage(lang){const d=tr[lang]||base;document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";document.querySelectorAll("[data-i18n]").forEach(e=>{const k=e.dataset.i18n;if(d[k])e.textContent=d[k];});localStorage.setItem("privacy-language",lang);}
+const saved=localStorage.getItem("privacy-language")||"en";languageSelect.value=saved;applyLanguage(saved);languageSelect.addEventListener("change",e=>applyLanguage(e.target.value));
+const sections=document.querySelectorAll(".section");const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity="1";e.target.style.transform="translateY(0)";}}),{threshold:.1});sections.forEach(s=>observer.observe(s));
   </script>
 
 </body>
